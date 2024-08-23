@@ -22,7 +22,7 @@ const initialState = {
   error: null,
 };
 
-export const movieSlice = createSlice({
+export const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
@@ -46,5 +46,5 @@ export const movieSlice = createSlice({
   },
 });
 
-export const { handleCategoryChange } = movieSlice.actions;
-export default movieSlice.reducer;
+export const { handleCategoryChange } = moviesSlice.actions;
+export default moviesSlice.reducer;

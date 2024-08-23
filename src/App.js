@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Form from './components/Form';
 import Card from './components/Card';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleCategoryChange, fetchMovies } from './redux/movieSlice';
+import { handleCategoryChange, fetchMovies } from './redux/moviesSlice';
 
 
 function App() {
