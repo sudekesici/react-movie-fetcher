@@ -4,18 +4,18 @@ import Header from './components/Header';
 import Form from './components/Form';
 import Card from './components/Card';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleCategoryChange, fetchMovies } from './redux/counterSlice';
+import { handleCategoryChange, fetchMovies } from './redux/movieSlice';
 
 
 function App() {
   const dispatch = useDispatch();
-  const { category, cards = [], status, error } = useSelector((state) => state.counter);
+  const { category, cards = [], status, error } = useSelector((state) => state.movies);
 
   useEffect(() => {
       dispatch(fetchMovies(category));
   }, []);
 
-  const handleInputChange = (event) => {
+  const handleSelectChange = (event) => {
     dispatch(handleCategoryChange(event.target.value));
     dispatch(fetchMovies(event.target.value));
   };
@@ -28,7 +28,7 @@ function App() {
         <div className="title">
           <h1 className='poppins-semibold' style={{color:'#209bd8'}}>Hello, May I Help You?</h1>
         </div>
-        <Form onCategoryChange={handleInputChange} /> 
+        <Form onCategoryChange={handleSelectChange} /> 
         <div className='cards'>
           {status === 'loading' && <p>Loading</p>}
           {status === 'failed' && <p>{error}</p>}

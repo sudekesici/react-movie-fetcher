@@ -4,13 +4,13 @@ import axios from 'axios';
 const BASE_URL = 'https://api.sampleapis.com/movies';
 
 export const fetchMovies = createAsyncThunk(
-  'counter/fetchMovies', // bu ne işe yarıyor
+  'movies/fetchMovies', 
   async (category, thunkAPI) => {
     try {
       const response = await axios.get(`${BASE_URL}/${category}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message); // bu ne
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -22,13 +22,13 @@ const initialState = {
   error: null,
 };
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const movieSlice = createSlice({
+  name: 'movies',
   initialState,
   reducers: {
     handleCategoryChange: (state, action) => {
       state.category = action.payload;
-    }, // kategori değiştimek için yapmıştım bunu app.jsde useDispatch ile çektim.
+    }, 
   },
   extraReducers: (builder) => {
     builder
@@ -46,5 +46,5 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { handleCategoryChange } = counterSlice.actions;
-export default counterSlice.reducer;
+export const { handleCategoryChange } = movieSlice.actions;
+export default movieSlice.reducer;
